@@ -39,7 +39,7 @@ void swap(int &a, int &b) {
 }
 
 void PrintBattery(vector<int> bank[], int paralel, int serial, float srednee) {
-    srednee = srednee * 7;
+    srednee = srednee * 3;
     for (int p = 0; p < paralel; p++)
     {
         for (int i = 0; i < serial; i++)
@@ -97,18 +97,24 @@ void f(vector<int> b[], int size, int srednee) {
 int main(int argc, char** argv) {
 
 
-    vector<int> battrey;
+    vector<int> battrey{2274, 2223, 2254, 2085, 2082, 2056, 1997, 1972, 1969, 1914, 1847, 1862, 1797, 1756, 1733, 1697, 1682, 1650, 1649, 1647, 1634, 1603, 1584, 1564, 1557, 1532, 1501, 1246, 1625, 1898, 1799, 1971, 1596, 1585, 1667, 1686, 1683, 1916, 1451};
     vector<int> bank[13];
 
     srand(98567433);
     cout << "Дано: ";
 
-    for (int i = 0; i < 91; i++)
+    //    for (int i = 0; i < 91; i++)
+    //    {
+    //        int r = 1 + rand() % 10000;
+    //        battrey.push_back(r);
+    //        cout << " " << r;
+    //    }
+
+    for (auto it = battrey.begin(); it != battrey.end(); it++)
     {
-        int r = 1 + rand() % 10000;
-        battrey.push_back(r);
-        cout << " " << r;
+        cout << *it << " ";
     }
+
 
     cout << endl;
 
@@ -165,21 +171,24 @@ int main(int argc, char** argv) {
         bank[0].push_back(battrey.at(i++));
     }
 
-    PrintBattery(bank, 7, 13, srednee);
+    PrintBattery(bank, 3, 13, srednee);
 
     cout << "\n\n---------------------------------------Шаманим------------------------------------------------------\r\n";
-    f(bank, 13, srednee * 7);
-    f(bank, 13, srednee * 7);
+    f(bank, 13, srednee * 3);
+    f(bank, 13, srednee * 3);
+    //swap(bank[11].at(0), bank[12].at(0));
+    //swap(bank[11].at(2), bank[12].at(2));
+    swap(bank[9].at(2), bank[12].at(2));
 
-    PrintBattery(bank, 7, 13, srednee);
+    PrintBattery(bank, 3, 13, srednee);
 
-    cout << "\n\n---------------------------------------Шаманим2------------------------------------------------------\r\n";
-
-    f(bank, 13, srednee * 7 * 0.000907692 + srednee * 7);
-    f(bank, 13, srednee * 7 * 0.000392308 + srednee * 7);
-    f(bank, 13, srednee * 7 * 0.000353846 + srednee * 7);
-
-    PrintBattery(bank, 7, 13, srednee);
+//    cout << "\n\n---------------------------------------Шаманим2------------------------------------------------------\r\n";
+//
+//    f(bank, 13, srednee * 3 * 0.000907692 + srednee * 3);
+//    f(bank, 13, srednee * 3 * 0.000392308 + srednee * 3);
+//    f(bank, 13, srednee * 3 * 0.000353846 + srednee * 3);
+//
+//    PrintBattery(bank, 3, 13, srednee);
 
     fflush(stdout);
 
